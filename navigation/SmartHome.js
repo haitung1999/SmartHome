@@ -1,15 +1,18 @@
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import DashboardScreen from '../screens/DashboardScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
-import Dashboard from '../screens/Dashboard';
-import Settings from '../screens/Settings';
+const Stack = createStackNavigator();
 
-export default createStackNavigator({
-    Dashboard: {
-        screen: Dashboard,
-    },
-    Settings: {
-        screen: Settings,
-    }
-}, {
-    initialRouteName: 'Dashboard'
-});
+export default function SmartHome() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Dashboard" component={DashboardScreen} />
+                <Stack.Screen name="Settings" component={SettingsScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
